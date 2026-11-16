@@ -4,6 +4,11 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="theme-color" content="#142c43"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<link rel="icon" type="image/png" href="./icon-192.png"/>
+<link rel="apple-touch-icon" href="./icon-192.png"/>
+<link rel="manifest" href="./manifest.webmanifest"/>
 <title>GeoBussola | La sfida delle capitali</title>
 <style>
 :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#142c43;background:#f6f8f9;font-synthesis:none}
@@ -147,6 +152,11 @@ function onlineStandings(st){return '<div class="standings">'+st.players.slice()
 const nav=document.createElement('div');nav.id='gameMode';nav.className='modeNav';nav.innerHTML='<button data-mode="local" class="active">Un solo dispositivo</button><button data-mode="online">Online · telefoni diversi</button>';document.querySelector('.intro').after(nav);nav.querySelector('[data-mode=local]').onclick=localChoose;nav.querySelector('[data-mode=online]').onclick=onlineChoose;
 if(new URL(location.href).searchParams.has('room')){online.mode='menu';onlineRender();}
 
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
+}
 </script>
 </body>
 </html>
